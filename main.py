@@ -45,6 +45,9 @@ model_weights = torch.load("mnist.pt", map_location=torch.device("cpu"))
 # 読み込んだ重みをネットワークモデルに設定
 net.load_state_dict(model_weights)
 
+@app.get('/')
+async def read_root():
+    return {'message': 'Welcome to MNIST-FastAPI-Streamlit-Backend API!'}
 
 @app.post("/prediction")
 async def predict_image(request: Request):
