@@ -35,7 +35,9 @@ class_probabilities = [0.0] * 10
 if handwritten_image.is_submitted:
     # FastAPIサーバーに画像を送信し、予測結果を取得
     response = requests.post(
-        "http://127.0.0.1:8000/prediction", data=handwritten_image.raw_image_bytes
+        # "http://127.0.0.1:8000/prediction", data=handwritten_image.raw_image_bytes
+        # FastAPIをRenderでデプロイしたURLに変更    2023/12/17
+        "https://mnist-fastapi-streamlit-backend.onrender.com/prediction", data=handwritten_image.raw_image_bytes
     )
     response_json = response.json()
 
